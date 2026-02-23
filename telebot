@@ -233,19 +233,5 @@ async def teachers(callback: CallbackQuery):
     await callback.message.edit_text(text, reply_markup=teachers_keyboard())
     await callback.answer()
 
-
-async def main():
-    try:
-        me = await bot.get_me()
-        print(f"Бот запущен: @{me.username} (id={me.id})")
-        await dp.start_polling(bot)
-    except TelegramConflictError:
-        print("Ошибка: запущено несколько копий бота (409 Conflict).")
-        print("Останови второй процесс бота или отключи parallel polling.")
-    except TelegramUnauthorizedError:
-        print("Ошибка: Telegram отклонил токен (Unauthorized).")
-        print("Проверь BOT_TOKEN или выпусти новый у @BotFather.")
-
-
 if __name__ == "__main__":
     asyncio.run(main())
